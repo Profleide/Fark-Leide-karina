@@ -1,0 +1,9 @@
+body {
+    background-color: lavenderblush;
+    font-family: 'Special Elite', cursive;
+}
+
+.header p{
+    letter-spacing: 2px;
+    font-size: 12px;
+}
