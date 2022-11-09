@@ -16,13 +16,27 @@ const result = document.getElementById("result");
 const lblAccuracy = document.getElementById("lblAccuracy");
 const accuracy = document.getElementById("accuracy");
 
-const noises = [
-  "Background Noise",
-  "caneca",
-  "estalo de dedo",
-  "la la la",
-  "palmas"
-];
+// const noises = [
+//   "Background Noise",
+//   "caneca",
+//   "estalo de dedo",
+//   "la la la",
+//   "palmas"
+// ];
+
+var noises = [];
+getNoises();
+
+async function getNoises() {
+  const request = new Request(metadataURL);
+  const response = await fetch(request);
+  const data = await response.json();
+  noises = data.wordLabels;
+  console.log("Noises loaded")
+  // console.log(Array.isArray(noises));
+  // console.log(noises);
+}
+
 
 function modelReady() {
   // classify sound
@@ -41,6 +55,8 @@ function gotResult(error, results) {
   }
   // log the result
   // console.log(results);
+
+console.log(noises)
 
   const rgb =
     'rgb(' +
