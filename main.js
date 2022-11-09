@@ -16,6 +16,9 @@ const result = document.getElementById("result");
 const lblAccuracy = document.getElementById("lblAccuracy");
 const accuracy = document.getElementById("accuracy");
 
+let isNoisesReady = false;
+let isModelReady = false;
+
 // const noises = [
 //   "Background Noise",
 //   "caneca",
@@ -32,16 +35,25 @@ async function getNoises() {
   const response = await fetch(request);
   const data = await response.json();
   noises = data.wordLabels;
-  console.log("Noises loaded")
+  console.log("Noises loaded");
+  isNoisesReady = true;
+  showButton();
   // console.log(Array.isArray(noises));
   // console.log(noises);
 }
 
-
 function modelReady() {
   // classify sound
   // classifier.classify(gotResult);
-  btnIniciar.style.display = "inline-block";
+  console.log("Model Ready");
+  isModelReady = true;
+  showButton();
+}
+
+function showButton() {
+  if (isModelReady && isNoisesReady){
+    btnIniciar.style.display = "inline-block";
+  }
 }
 
 function iniciar() {
