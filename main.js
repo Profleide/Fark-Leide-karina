@@ -2,7 +2,8 @@ const URL = 'https://teachablemachine.withgoogle.com/models/8XhqeyFcN/'
 
 const checkpointURL = URL + 'model.json'
 const metadataURL = URL + 'metadata.json';
-// console.log(metadataURL);
+console.log(checkpointURL);
+console.log(metadataURL);
 
 // Options for the SpeechCommands18w model, the default probabilityThreshold is 0
 const options = { probabilityThreshold: 0.7 };
